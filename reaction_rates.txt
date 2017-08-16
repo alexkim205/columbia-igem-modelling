@@ -1,0 +1,37 @@
+## For shRNA knockdown modelling
+
+# Degradation rates
+Parameter('kf_mRNA_deg', 1.0e-03)               # mRNA degradation rate
+Parameter('kf_siRNA_deg', 1.0e-03)              # siRNA degradation rate
+
+# Dicer
+# E + S <> E:S >> E + P
+Parameter('kf_dicer', 1.0e-03)                  # forward rate of dicer-shRNA complex --> dicer + siRNA
+Parameter('kr_dicer', 1.0e-03)                  # forward rate of dicer + shRNA --> dicer-shRNA complex
+Parameter('kc_dicer', 1.0e-07)                  # reverse rate of dicer-shRNA complex --> dicer + shRNA
+
+# RISC
+Parameter('kc_siRNA_RISC_bind', 1.0e-02)        # forward rate of siRNA binding to RISC --> RISC-siRNA complex
+Parameter('kc_siRNA_RISC_mRNA_bind', 1.0e-02)   # forward rate of mRNA binding to RISC-siRNA complex --> mRNA-siRNA-RISC complex
+Parameter('kc_cleave', 1)                       # forward rate of cleaving rate of mRNA-siRNA-RISC complex, aka how fast mRNA is cleaved
+
+------------------------------------------------
+
+## For tetR modelling
+Parameter('kf_tetR_production', 0)              # how fast tet repressor protein (tetR) is produced
+Parameter('kf_gene_transcription', .001)        # how fast gene is transcripted
+Parameter('kf_tetR_tetO_bind', .1)              # how fast tetR binds to tet operon (tetO)
+Parameter('kf_tetR_Tc_bind', .1)                # how fast tetracycline (Tc) binds to tetR
+Parameter('kf_RNA_deg', .001)                   # how fast RNA degrades
+Parameter('kf_Tc_deg', .000001)                 # how fast Tc degrades
+
+## Rates
+# reaction rates
+Parameter('kf_rtTA_translation', .001)
+Parameter('kf_rtTA_dox_bind', .01)
+Parameter('kf_rtTA_tetO_bind', .01)
+
+# degradation/synthesis rates
+Parameter('kf_rtTA_deg', .0001)
+Parameter('kf_dox_deg', .0001)
+Parameter('kf_dox_syn', .7)
